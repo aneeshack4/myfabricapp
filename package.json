@@ -6,7 +6,9 @@
     "office-ui-fabric-react": "^6.95.0",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "react-scripts": "2.0.5",
+    "request": "^2.88.0",
+    "uuidv4": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
