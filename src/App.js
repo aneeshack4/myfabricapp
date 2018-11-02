@@ -92,10 +92,8 @@ class App extends Component {
       request(options, function(err, res, body){
           console.log(JSON.stringify(body, null, 4));
           var result = JSON.stringify(body, null, 4);
-          var params = result.getJSONArray("translations");
-          var param1 = params.getJSONObject(0);
-          var translation = param1.getString("text");
-          translatedResultLabel.value = translation;
+          var resultObj = JSON.parse(result);
+          translatedResultLabel.value = resultObj[0].translations[0].text;
       });
 
     }
