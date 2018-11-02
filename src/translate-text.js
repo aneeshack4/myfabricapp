@@ -7,10 +7,10 @@ string, then comment these lines out.
 
 If you want to set your subscription key as a string, replace the value for
 the Ocp-Apim-Subscription-Key header as a string. */
-const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
-if (!subscriptionKey) {
-  throw new Error('Environment variable for your subscription key is not set.')
-};
+// const subscriptionKey = process.env.TRANSLATOR_TEXT_KEY;
+// if (!subscriptionKey) {
+//   throw new Error('Environment variable for your subscription key is not set.')
+// };
 
 let options = {
     method: 'POST',
@@ -22,7 +22,7 @@ let options = {
       'to': 'de'
     },
     headers: {
-      'Ocp-Apim-Subscription-Key': subscriptionKey,
+      'Ocp-Apim-Subscription-Key': 'e2d5f38c05af4872ab8cef78aaf76c15',
       'Content-type': 'application/json',
       'X-ClientTraceId': uuidv4().toString()
     },
