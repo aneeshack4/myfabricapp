@@ -1,13 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import {
-  DocumentCard,
-  DocumentCardPreview,
-  DocumentCardTitle,
-  DocumentCardActivity
-} from 'office-ui-fabric-react/lib/DocumentCard';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -15,34 +7,6 @@ class App extends Component {
   render() {
     return (
       <React.Fragment>
-        <DocumentCard onClickHref='http://bing.com'>
-          <DocumentCardPreview
-            previewImages={ [
-              {
-                previewImageSrc: require('./documentpreview.png'),
-                iconSrc: require('./iconppt.png'),
-                width: 318,
-                height: 196,
-                accentColor: '#ce4b1f'
-              }
-            ] }
-          />
-          <DocumentCardTitle title='Revenue stream proposal fiscal year 2016 version02.pptx'/>
-          <DocumentCardActivity
-            activity='Created Feb 23, 2016'
-            people={
-              [
-                { name: 'Kat Larrson', profileImageSrc: require('./avatarkat.png') }
-              ]
-            }
-            />
-        </DocumentCard>
-        <Label>StandardButton</Label>
-        <DefaultButton
-          text="turn background red"
-          onClick={onClick}
-        />
-        
         <form action="" className="docs-TextFieldExample">
           <TextField
             id="inputfield"
@@ -54,7 +18,7 @@ class App extends Component {
           <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
         </form>
 
-        <TextField id='translatedResult' label="Italian:" underlined />
+        <TextField id='translatedResult' label="Telugu:" underlined />
       </React.Fragment>
     );
     function onClick() {
@@ -62,7 +26,6 @@ class App extends Component {
       document.body.style.backgroundColor = "red";
     }
     function translateInput() {
-      //const input = "hello world"
       const textfield = document.getElementById('inputfield');
       const input2 = textfield.value;
 
@@ -75,7 +38,7 @@ class App extends Component {
           url: 'translate',
           qs: {
             'api-version': '3.0',
-            'to': 'it',
+            'to': 'te',
           },
           headers: {
             'Ocp-Apim-Subscription-Key': 'e2d5f38c05af4872ab8cef78aaf76c15',
