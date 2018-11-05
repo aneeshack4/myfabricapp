@@ -21,10 +21,6 @@ class App extends Component {
         <TextField id='translatedResult' label="Telugu:" underlined />
       </React.Fragment>
     );
-    function onClick() {
-      alert('Clicked');
-      document.body.style.backgroundColor = "red";
-    }
     function translateInput() {
       const textfield = document.getElementById('inputfield');
       const input2 = textfield.value;
@@ -39,6 +35,8 @@ class App extends Component {
           qs: {
             'api-version': '3.0',
             'to': 'te',
+            // 'to': 'ru',
+            // 'to': 'es'
           },
           headers: {
             'Ocp-Apim-Subscription-Key': 'e2d5f38c05af4872ab8cef78aaf76c15',
