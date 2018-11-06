@@ -2,23 +2,25 @@ import React, { Component } from 'react';
 import './App.css';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-
+import { VerticalStack } from '@uifabric/experiments';
+ 
 class App extends Component {
   render() {
     return (
       <React.Fragment>
         <form action="" className="docs-TextFieldExample">
-          <TextField
-            id="inputfield"
-            label="Enter the text you'd like to translate."
-            name="example"
-            autoComplete="on"
-            default="booh!"
-          />
-          <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
+          <VerticalStack gap={10} maxWidth='25%'>
+            <TextField
+              id="inputfield"
+              label="Enter the text you'd like to translate."
+              name="example"
+              autoComplete="on"
+              default="booh!"
+            />
+            <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
+            <TextField id='translatedResult' label="Telugu:" underlined />
+          </VerticalStack>
         </form>
-
-        <TextField id='translatedResult' label="Telugu:" underlined />
       </React.Fragment>
     );
     function translateInput() {
