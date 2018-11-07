@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { VerticalStack } from '@uifabric/experiments';
  
 class App extends Component {
@@ -19,6 +20,20 @@ class App extends Component {
             />
             <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
             <TextField id='translatedResult' label="Telugu:" underlined />
+            <Dropdown
+              label="Choose a language:"
+              selectedKey={selectedItem ? selectedItem.key : undefined}
+              onChange={this.changeState}
+              onFocus={this._log('onFocus called')}
+              onBlur={this._log('onBlur called')}
+              placeHolder="Select an Option"
+              options={[
+                { key: 'te', text: 'Telugu' },
+                { key: 'es', text: 'Spanish' },
+                { key: 'ru', text: 'Russian' },
+                { key: 'it', text: 'Italian' },
+              ]}
+            />
           </VerticalStack>
         </form>
       </React.Fragment>
