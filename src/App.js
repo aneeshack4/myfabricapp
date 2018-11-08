@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+//import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { VerticalStack } from '@uifabric/experiments';
  
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <React.Fragment>
         <form action="" className="docs-TextFieldExample">
-          <VerticalStack gap={10} maxWidth='25%'>
+          <VerticalStack gap={10} maxWidth='50%'>
             <TextField
               id="inputfield"
               label="Enter the text you'd like to translate."
@@ -19,8 +19,8 @@ class App extends Component {
               default="booh!"
             />
             <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
-            <TextField id='translatedResult' label="Telugu:" underlined />
-            <Dropdown
+            <TextField id='translatedResult' label="Spanish:" underlined />
+            {/* <Dropdown
               label="Choose a language:"
               selectedKey={selectedItem ? selectedItem.key : undefined}
               onChange={this.changeState}
@@ -33,11 +33,12 @@ class App extends Component {
                 { key: 'ru', text: 'Russian' },
                 { key: 'it', text: 'Italian' },
               ]}
-            />
+            /> */}
           </VerticalStack>
         </form>
       </React.Fragment>
     );
+
     function translateInput() {
       const textfield = document.getElementById('inputfield');
       const input2 = textfield.value;
@@ -46,25 +47,24 @@ class App extends Component {
       const uuidv4 = require('uuid/v4');
 
       let options = {
-          method: 'POST',
-          baseUrl: 'https://api.cognitive.microsofttranslator.com/',
-          url: 'translate',
-          qs: {
-            'api-version': '3.0',
-            'to': 'te',
-            // 'to': 'ru',
-            // 'to': 'es'
-          },
-          headers: {
-            'Ocp-Apim-Subscription-Key': 'e2d5f38c05af4872ab8cef78aaf76c15',
-            'Content-type': 'application/json',
-            'X-ClientTraceId': uuidv4().toString()
-          },
-          body: [{
-                'text': input2
-          }],
-          json: true,
-      };
+        method: 'POST',
+        baseUrl: 'https://api.cognitive.microsofttranslator.com/',
+        url: 'translate',
+        qs: {
+          'api-version': '3.0',
+          'to': 'ru',
+          'to': 'es'
+        },
+        headers: {
+          'Ocp-Apim-Subscription-Key': 'e2d5f38c05af4872ab8cef78aaf76c15',
+          'Content-type': 'application/json',
+          'X-ClientTraceId': uuidv4().toString()
+        },
+        body: [{
+              'text': input2
+        }],
+        json: true,
+    };
 
       const translatedResultLabel = document.getElementById('translatedResult');
       request(options, function(err, res, body){
