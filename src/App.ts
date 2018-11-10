@@ -2,11 +2,33 @@ import React, { Component } from 'react';
 import './App.css';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-//import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { VerticalStack } from '@uifabric/experiments';
+import { BaseComponent, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import './Dropdown.Basic.Example.scss';
+
+export class DropdownBasicExample extends BaseComponent<
+  {},
+  {
+    selectedItem?: { key: string | number | undefined };
+    selectedItems: string[];
+  }
+> {
+  private _basicDropdown = createRef<IDropdown>();
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      selectedItem: undefined,
+      selectedItems: []
+    };
+  }
  
 class App extends Component {
-  render() {
+  
+  public render() {
+    const { selectedItem, selectedItems } = this.state;
+
     return (
       <React.Fragment>
         <form action="" className="docs-TextFieldExample">
@@ -20,20 +42,23 @@ class App extends Component {
             />
             <PrimaryButton onClick={translateInput}>Submit</PrimaryButton>
             <TextField id='translatedResult' label="Spanish:" underlined />
-            {/* <Dropdown
-              label="Choose a language:"
-              selectedKey={selectedItem ? selectedItem.key : undefined}
-              onChange={this.changeState}
-              onFocus={this._log('onFocus called')}
-              onBlur={this._log('onBlur called')}
-              placeHolder="Select an Option"
-              options={[
-                { key: 'te', text: 'Telugu' },
-                { key: 'es', text: 'Spanish' },
-                { key: 'ru', text: 'Russian' },
-                { key: 'it', text: 'Italian' },
-              ]}
-            /> */}
+            <div className="docs-DropdownExample">
+              <Dropdown
+                placeHolder="Choose a language to translate to:"
+                label="Choose a language to translate to: "
+                id="languagesDropdown"
+                ariaLabel="Basic dropdown example"
+                options={[
+                  { key: 'Header', text: 'Actions', itemType: DropdownMenuItemType.Header },
+                  { key: 'es', text: 'Spanish' },
+                  { key: 'it', text: 'Italian' },
+                  { key: 'te', text: 'Telugu'},
+                  { key: 'ru', text: 'Russian' },
+                ]}
+                onFocus={this._log('onFocus called')}
+                componentRef={this._basicDropdown}
+              />
+            </div>
           </VerticalStack>
         </form>
       </React.Fragment>
